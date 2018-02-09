@@ -39,3 +39,18 @@
     \item Treat bracketed groups as individual characters.
   \end{enumerate}
 \end{frame}
+
+\begin{frame}{Infix and postfix}
+  It is sometimes convenient to re-write expressions in postfix.
+  This applies to lots of different expressions, not just regular expressions.
+  \vspace{2mm}
+  \begin{exampleblock}{Example}
+    The infix mathematical expression ``$(3+4) \times 5$'' is ``$3 \ 4 \ + 5 \ \times$'' in postfix.
+  \end{exampleblock}
+  \vspace{2mm}
+  \begin{exampleblock}{Example}
+    The infix regular expression ``$a.(b.b)^*.a$'' is ``$abb.^*.a.$'' in postfix.
+    Note we often omit the $.$ in infix notation: ``$a(bb)^*a$'' but can't in postfix.
+    However, the brackets aren't needed in postfix.
+  \end{exampleblock}
+\end{frame}
