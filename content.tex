@@ -1,77 +1,55 @@
- \begin{frame}{Regular expressions}
-  \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
-      \begin{itemize}
-        \setlength\itemsep{5mm}
-        \item Regular expressions are strings that represent patterns of text.
-        \item The strings can contain special characters.
-        \item Brackets can be used to group characters together.
-        \item Regular expressions are used to search other strings for patterns.
-      \end{itemize}
-    \end{column}
-\vrule{}
-    \begin{column}{0.5\textwidth}
-      \begin{exampleblock}{Examples}
-        \redmathl{a.b.c^*} \\
-        An $a$ followed by a $b$ followed by zero or more $c$'s. \\
-        \redmathl{a|b.c} \\
-        An $a$, or a $b$ followed by a $c$. \\
-        \redmathl{(a|b).c} \\
-        An $a$ or a $b$, followed by a $c$. \\
-        \redmathl{0.0.(0|1)^*}\\
-        All strings of $0$'s and $1$' that begin with two zeros.
-      \end{exampleblock}
-    \end{column}
-  \end{columns}
+\begin{frame}{Regular expressions}
+  
+  \redmath{(0.0|1.1).(0.1)*.(0.0|1.1)}
+
+  \begin{itemize}
+    \item Regular expressions are strings that represent patterns of text.
+    \item The strings can contain special characters.
+    \item Brackets can be used to group characters together.
+    \item Regular expressions are used to search other strings for patterns.
+  \end{itemize}
+  \begin{alertblock}{Special characters}
+    \begin{description}[abbb]
+      \item[$.$] means \emph{concatenate}. So, $a.b$ means an $a$ followed by a $b$.
+      \item[$|$] means \emph{or}. So, $a|b$ means an $a$ or a $b$.
+      \item[$*$] means \emph{zero or more times}. So, $a^*$ means zero or more $a$'s.
+    \end{description}
+  \end{alertblock}
 \end{frame}
 
+\begin{frame}{Examples of regular expressions}
+  \begin{description}[aaaaaaaa]
+    \setlength\itemsep{5mm}
+    \item[$a.b.c$] -- a single $a$ followed by a single $b$ followed by a single $c$. 
+    \item[$a.b.c^*$] -- an $a$ followed by a $b$ followed by zero or more $c$'s.
+    \item[$a|b.c$] -- an $a$, or a $b$ followed by a $c$.
+    \item[$(a|b).c$] -- an $a$ or a $b$, followed by a $c$.
+    \item[$0.0.(0|1)^*$] -- all strings of $0$'s and $1$' that begin with two zeros.
+    \item[$1^*$] -- any number of $1$'s (including empty string).
+  \end{description}
+\end{frame}
 
-\begin{frame}{Special characters}
-  \begin{columns}
-    \begin{column}{0.5\textwidth}
-      \begin{description}[abbb]
-        \item[$.$] means \emph{concatenate}. So, $a.b$ means an $a$ followed by a $b$.
-        \item[$|$] means \emph{or}. So, $a|b$ means an $a$ or a $b$.
-        \item[$^*$] means \emph{zero of more times}. So, $a^*$ means zero or more $a$'s.
-      \end{description}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \begin{alertblock}{Precedence}
-        \begin{enumerate}
-          \setlength\itemsep{5mm}
-          \item Always apply $^*$ first.
-          \item Apply $.$ after $^*$ but before $|$.
-          \item Apply $|$ last.
-          \item Treat bracketed groups as individual characters.
-        \end{enumerate}
-      \end{alertblock}
-    \end{column}
-  \end{columns}
+\begin{frame}{Precedence}
+  \begin{enumerate}
+    \setlength\itemsep{5mm}
+    \item Always apply $^*$ first.
+    \item Apply $.$ after $^*$ but before $|$.
+    \item Apply $|$ last.
+    \item Treat bracketed groups as individual characters.
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}{Infix and postfix}
   It is sometimes convenient to re-write expressions in postfix.
   This applies to lots of different expressions, not just regular expressions.
-  \vspace{2mm}
   \begin{exampleblock}{Example}
-    The infix mathematical expression ``$(3+4) \times 5$'' is ``$3 \ 4 \ + 5 \ \times$'' in postfix.
+    Convert an infix mathematical expression (left) to postfix (right):
+    $$(3+4) \times 5 \qquad \rightarrow \qquad 3 \ 4 \  + 5 \  \times$$
   \end{exampleblock}
-  \vspace{2mm}
   \begin{exampleblock}{Example}
-    The infix regular expression ``$a.(b.b)^*.a$'' is ``$abb.^*.a.$'' in postfix.
+    Converting an infix regular expression (left) to postfix (right):
+    $$a.(b.b)^*.a \qquad  \rightarrow  \qquad  abb.^*.a.$$
     Note we often omit the $.$ in infix notation: ``$a(bb)^*a$'' but can't in postfix.
     However, the brackets aren't needed in postfix.
   \end{exampleblock}
-\end{frame}
-
-\begin{frame}{Executing regular expressions against strings}
-  \redmath{r = ``(0^*1^*|1^*0^*)''}
-  \redmath{s = ``00000000011111111111111111''}
-
-  \begin{itemize}
-    \item Regular expressions are \emph{executed} against strings.
-    \item This means an algorithm determines if the string ($s$) matches the pattern as defined by the regular expression ($r$).
-    \item We can ask two related questions: does the whole string match, or does a substring of it match?
-    \item We can write algorithms to answer either question.
-  \end{itemize}
 \end{frame}
