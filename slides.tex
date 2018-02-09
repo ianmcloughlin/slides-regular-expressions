@@ -93,6 +93,7 @@
 
   % An environment for displaying math in red, without lots of vertical space.
   \newcommand{\redmath}[1]{\vspace{-3mm} {\begin{center} \color{gmitred} $ #1 $ \end{center}} \vspace{-2mm}}
+  \newcommand{\redmathl}[1]{{\color{gmitred} $ #1 $}}
 
   % For displaying a blank character.
   \newcommand{\bl}{\underline{\hspace{2mm}}}
@@ -106,7 +107,7 @@
   \makeatletter
   \expandafter\def\csname PYGdefault@tok@err\endcsname{\def\PYGdefault@bc##1{{\strut ##1}}}
   \makeatother
-  
+
   \begin{document}
     \title{Regular expressions}
     \subtitle{}

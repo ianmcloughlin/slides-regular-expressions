@@ -1,46 +1,51 @@
- \begin{frame}[t]{Regular expressions}
-  
+ \begin{frame}{Regular expressions}
   \begin{columns}[T]
-    \begin{column}{width=0.5\textwidth}
-      \redmath{(0.0|1.1).(0.1)*.(0.0|1.1)}
+    \begin{column}{0.5\textwidth}
       \begin{itemize}
+        \setlength\itemsep{5mm}
         \item Regular expressions are strings that represent patterns of text.
         \item The strings can contain special characters.
         \item Brackets can be used to group characters together.
         \item Regular expressions are used to search other strings for patterns.
       \end{itemize}
-      \vspace{2mm}
-      \begin{alertblock}{Special characters}
-        \begin{description}[abbb]
-          \item[$.$] means \emph{concatenate}. So, $a.b$ means an $a$ followed by a $b$.
-          \item[$|$] means \emph{or}. So, $a|b$ means an $a$ or a $b$.
-          \item[$^*$] means \emph{zero of more times}. So, $a^*$ means zero or more $a$'s.
-        \end{description}
-      \end{alertblock}
     \end{column}
-    \begin{column}{width=0.5\textwidth}
-      \begin{description}[aaaaaaaa]
-        \setlength\itemsep{5mm}
-        \item[$a.b.c$] -- a single $a$ followed by a single $b$ followed by a single $c$. 
-        \item[$a.b.c^*$] -- an $a$ followed by a $b$ followed by zero or more $c$'s.
-        \item[$a|b.c$] -- an $a$, or a $b$ followed by a $c$.
-        \item[$(a|b).c$] -- an $a$ or a $b$, followed by a $c$.
-        \item[$0.0.(0|1)^*$] -- all strings of $0$'s and $1$' that begin with two zeros.
-        \item[$1^*$] -- any number of $1$'s (including empty string).
-      \end{description}
+    \begin{column}{0.5\textwidth}
+      \begin{exampleblock}{Examples}
+        \redmathl{a.b.c^*} \\
+        An $a$ followed by a $b$ followed by zero or more $c$'s. \\
+        \redmathl{a|b.c} \\
+        An $a$, or a $b$ followed by a $c$. \\
+        \redmathl{(a|b).c} \\
+        An $a$ or a $b$, followed by a $c$. \\
+        \redmathl{0.0.(0|1)^*}\\
+        All strings of $0$'s and $1$' that begin with two zeros.
+      \end{exampleblock}
     \end{column}
   \end{columns}
 \end{frame}
 
 
-\begin{frame}{Precedence}
-  \begin{enumerate}
-    \setlength\itemsep{5mm}
-    \item Always apply $^*$ first.
-    \item Apply $.$ after $^*$ but before $|$.
-    \item Apply $|$ last.
-    \item Treat bracketed groups as individual characters.
-  \end{enumerate}
+\begin{frame}{Special characters}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{description}[abbb]
+        \item[$.$] means \emph{concatenate}. So, $a.b$ means an $a$ followed by a $b$.
+        \item[$|$] means \emph{or}. So, $a|b$ means an $a$ or a $b$.
+        \item[$^*$] means \emph{zero of more times}. So, $a^*$ means zero or more $a$'s.
+      \end{description}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{alertblock}{Precedence}
+        \begin{enumerate}
+          \setlength\itemsep{5mm}
+          \item Always apply $^*$ first.
+          \item Apply $.$ after $^*$ but before $|$.
+          \item Apply $|$ last.
+          \item Treat bracketed groups as individual characters.
+        \end{enumerate}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Infix and postfix}
