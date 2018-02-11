@@ -29,6 +29,7 @@
   \end{description}
 \end{frame}
 
+
 \begin{frame}{Precedence}
   \begin{enumerate}
     \setlength\itemsep{5mm}
@@ -38,6 +39,21 @@
     \item Treat bracketed groups as individual characters.
   \end{enumerate}
 \end{frame}
+
+
+\begin{frame}{Languages of regular expressions}
+  This is a list of regular expressions over an alphabet $A$ and the languages they define.
+  \begin{description}[aa]
+    \setlength\itemsep{4mm}
+    \item[$\emptyset$] -- the empty language ($\{\}$).
+    \item[$\epsilon$] -- the language containing the empty string ($\{\epsilon\})$.
+    \item[$a$] -- the language containing any symbol $a$ from $A$ ($\{a\}$).
+    \item[$r.s$] -- the concatenation of the languages defined by regular expressions $r$ and $s$.
+    \item[$r|s$] -- the union of the languages of regular expressions $r$ and $s$.
+    \item[$r^*$] -- the star of the language defined by regular expression $r$.
+  \end{description}
+\end{frame}
+
 
 \begin{frame}{Infix and postfix}
   It is sometimes convenient to re-write expressions in postfix.
